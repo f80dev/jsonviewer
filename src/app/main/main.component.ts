@@ -9,8 +9,9 @@ import {ActivatedRoute, Router, RoutesRecognized} from '@angular/router';
 export class MainComponent implements OnInit {
 
   jsonObj = {};
+  waiting = false;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, public router: Router) {
   }
 
   ngOnInit() {
@@ -18,11 +19,15 @@ export class MainComponent implements OnInit {
 
     const file: string = params.get('file') || params.get('url');
     if (file != null) {
+      this.waiting = true;
       fetch(file).then((r) => {
+        this.waiting = false;
         r.json().then((jsonResponse) => {
           this.jsonObj = jsonResponse;
         });
       });
+    } else {
+      this.router.navigate(['faq']);
     }
   }
 
