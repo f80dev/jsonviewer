@@ -214,7 +214,7 @@ var MainComponent = /** @class */ (function () {
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
         var params = this.route.snapshot.queryParamMap;
-        var file = params.get('file');
+        var file = params.get('file') || params.get('url');
         if (file != null) {
             fetch(file).then(function (r) {
                 r.json().then(function (jsonResponse) {
@@ -245,7 +245,7 @@ var MainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ngx-json-viewer [json]=\"jsonObj\"></ngx-json-viewer>\n"
+module.exports = "<ngx-json-viewer style=\"font-size: large;\" [json]=\"jsonObj\" [expanded]=\"false\"></ngx-json-viewer>\n"
 
 /***/ }),
 

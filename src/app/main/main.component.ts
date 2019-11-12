@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     const params = this.route.snapshot.queryParamMap;
 
-    const file: string = params.get('file');
+    const file: string = params.get('file') || params.get('url');
     if (file != null) {
       fetch(file).then((r) => {
         r.json().then((jsonResponse) => {
