@@ -1,0 +1,16 @@
+{
+  "name": "JsonViewer",
+  "short_name": "JsonViewer",
+  "theme_color": "#1976d2",
+  "background_color": "#888888",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}
