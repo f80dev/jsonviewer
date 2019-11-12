@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ViewerComponent implements OnInit {
 
   @Input('json') jsonObj = {};
+  @Input('title') title = '';
 
   constructor() { }
 

@@ -243,7 +243,7 @@ var HelpComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-spinner *ngIf=\"waiting\"></mat-spinner>\n<app-viewer *ngIf=\"!waiting\" [json]=\"jsonObj\"></app-viewer>\n"
+module.exports = "<mat-spinner *ngIf=\"waiting\"></mat-spinner>\n<app-viewer *ngIf=\"!waiting\"\n            title=\"title\"\n            [json]=\"jsonObj\">\n</app-viewer>\n"
 
 /***/ }),
 
@@ -280,11 +280,13 @@ var MainComponent = /** @class */ (function () {
         this.router = router;
         this.jsonObj = {};
         this.waiting = false;
+        this.title = '';
     }
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
         var params = this.route.snapshot.queryParamMap;
         var file = params.get('file') || params.get('url');
+        this.title = params.get('title') || '';
         if (file != null) {
             this.waiting = true;
             fetch(file).then(function (r) {
@@ -320,7 +322,7 @@ var MainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ngx-json-viewer style=\"font-size: large;\" [json]=\"jsonObj\" [expanded]=\"false\">\n\n</ngx-json-viewer>\n"
+module.exports = "<h1 *ngIf=\"title?.length>0\">{{title}}</h1>\n<ngx-json-viewer style=\"font-size: large;\" [json]=\"jsonObj\" [expanded]=\"false\">\n</ngx-json-viewer>\n"
 
 /***/ }),
 
@@ -352,6 +354,7 @@ __webpack_require__.r(__webpack_exports__);
 var ViewerComponent = /** @class */ (function () {
     function ViewerComponent() {
         this.jsonObj = {};
+        this.title = '';
     }
     ViewerComponent.prototype.ngOnInit = function () {
     };
@@ -359,6 +362,10 @@ var ViewerComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('json'),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], ViewerComponent.prototype, "jsonObj", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('title'),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], ViewerComponent.prototype, "title", void 0);
     ViewerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-viewer',

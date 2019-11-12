@@ -1,2 +1,5 @@
 <mat-spinner *ngIf="waiting"></mat-spinner>
-<app-viewer *ngIf="!waiting" [json]="jsonObj"></app-viewer>
+<app-viewer *ngIf="!waiting"
+            title="title"
+            [json]="jsonObj">
+</app-viewer>

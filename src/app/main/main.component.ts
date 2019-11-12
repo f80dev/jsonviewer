@@ -10,6 +10,7 @@ export class MainComponent implements OnInit {
 
   jsonObj = {};
   waiting = false;
+  title = '';
 
   constructor(private route: ActivatedRoute, public router: Router) {
   }
@@ -18,6 +19,8 @@ export class MainComponent implements OnInit {
     const params = this.route.snapshot.queryParamMap;
 
     const file: string = params.get('file') || params.get('url');
+    this.title = params.get('title') || '';
+
     if (file != null) {
       this.waiting = true;
       fetch(file).then((r) => {
