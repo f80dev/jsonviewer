@@ -1,5 +1,9 @@
 <mat-spinner *ngIf="waiting"></mat-spinner>
+
+<textarea ([ngModel])="obj" matInput></textarea>
+<button mat-raised-button mat-button (click)="valide()">Valide</button>
+
 <app-viewer *ngIf="!waiting"
-            title="title"
+            [title]="title"
             [json]="jsonObj">
 </app-viewer>

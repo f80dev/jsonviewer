@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
   jsonObj = {};
   waiting = false;
   title = '';
+  obj: any = {};
 
   constructor(private route: ActivatedRoute, public router: Router) {
   }
@@ -29,9 +30,10 @@ export class MainComponent implements OnInit {
           this.jsonObj = jsonResponse;
         });
       });
-    } else {
-      this.router.navigate(['faq']);
     }
   }
 
+  valide() {
+    this.jsonObj = this.obj;
+  }
 }

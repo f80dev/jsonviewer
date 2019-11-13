@@ -243,7 +243,7 @@ var HelpComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-spinner *ngIf=\"waiting\"></mat-spinner>\n<app-viewer *ngIf=\"!waiting\"\n            title=\"title\"\n            [json]=\"jsonObj\">\n</app-viewer>\n"
+module.exports = "<mat-spinner *ngIf=\"waiting\"></mat-spinner>\n\n<textarea ([ngModel])=\"obj\" matInput></textarea>\n<button mat-raised-button mat-button (click)=\"valide()\">Valide</button>\n\n<app-viewer *ngIf=\"!waiting\"\n            [title]=\"title\"\n            [json]=\"jsonObj\">\n</app-viewer>\n"
 
 /***/ }),
 
@@ -281,6 +281,7 @@ var MainComponent = /** @class */ (function () {
         this.jsonObj = {};
         this.waiting = false;
         this.title = '';
+        this.obj = {};
     }
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -296,9 +297,9 @@ var MainComponent = /** @class */ (function () {
                 });
             });
         }
-        else {
-            this.router.navigate(['faq']);
-        }
+    };
+    MainComponent.prototype.valide = function () {
+        this.jsonObj = this.obj;
     };
     MainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
